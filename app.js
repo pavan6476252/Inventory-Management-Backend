@@ -14,10 +14,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    // origin: "http://localhost:5173",
-    // // origin: "https://inventory-management-backend-hsaf.onrender.com",
-
-    // methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      // methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     // credentials: true,
     // preflightContinue: false,
     origin: true,
