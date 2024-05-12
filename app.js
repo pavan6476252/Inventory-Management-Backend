@@ -15,9 +15,9 @@ const app = express();
 app.use(
   cors({
     // origin: "http://localhost:5173",
-    origin: process.env.ORIGIN,
+    origin: "https://inventory-management-backend-hsaf.onrender.com",
 
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    methods: ["GET", "POST", "PUT", "PATCH","DELETE"],
     credentials: true,
     preflightContinue: true,
   })
