@@ -1,7 +1,6 @@
- 
-import express from "express"; 
-import ProductModel from "../models/product_model.js"; 
-import HistoryModel from "../models/history_model.js"; 
+import express from "express";
+import ProductModel from "../models/product_model.js";
+import HistoryModel from "../models/history_model.js";
 
 const analyticsRoutes = express.Router();
 
@@ -23,7 +22,15 @@ const getExpiringProducts = async (months) => {
 
   const expiringProducts = await ProductModel.find({
     dateOfPurchase: { $lte: expirationDate }, // Products purchased before expirationDate
-  }).populate("manufacturer"); // Populate the manufacturer field if needed
+  })
+    .populate("createdBy")
+    .populate({
+      path: "history",
+      populate: {
+        path: "location",
+      },
+    })
+    .populate("manufacturer"); // Populate the manufacturer field if needed
 
   return expiringProducts;
 };
