@@ -15,21 +15,16 @@ const app = express();
 app.use(
   cors({
     // origin: "http://localhost:5173",
-    origin: "https://inventory-management-backend-hsaf.onrender.com",
+    // // origin: "https://inventory-management-backend-hsaf.onrender.com",
 
-    methods: ["GET", "POST", "PUT", "PATCH","DELETE"],
+    // methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    // credentials: true,
+    // preflightContinue: false,
+    origin: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
-    preflightContinue: true,
   })
 );
-
-app.use(function (req, res, next) {
-  //Enabling CORS
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,   Accept, x-client-key, x-client-token, x-client-secret, Authorization");
-    next();
-  });
 
 app.use(cookieParser());
 app.use(express.json());
