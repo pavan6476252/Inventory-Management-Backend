@@ -47,8 +47,7 @@ const getExpiringProducts = async (months) => {
         path: "location",
       },
     })
-    .populate("manufacturer"); // Populate the manufacturer field if needed
-
+    .populate("manufacturer").sort({ dateOfPurchase: -1 });
   return expiringProducts;
 };
 
