@@ -50,7 +50,9 @@ export const getAllUsers = async (req, res) => {
 export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
+    console.log(req.body);
     const user = await User.findOne({ email }).select("+password");
+    console.log(user)
     if (!user) {
       return res.status(404).json({
         success: false,
